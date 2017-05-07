@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+        <link rel="stylesheet" href="../../css/design.css">
+		<link rel="stylesheet" href="../../css/modal.css">
+		<link rel="stylesheet" href="../../css/pie3.css">
+		<title>Poll Maker</title>
+	</head>
+	<body background="../../png/bg-2.png">
+		<div id="myModal" class="modal">
+			<div class="modal-content">
+				<div class="info-modal-header"><table><tr><td><h2 style="color:white">Poll Results</h2></td><td align="right"><span class="bclose">&times;</span></td></tr></table></div>
+				<div class="modal-body" style="background-color: #eeeeee"><section class="row"><div class="column"><div class="donut-chart" data-donut-chart="1"></div></div><div class="column"><div class="legend"></div></div></section>	</div>
+			</div>
+		</div>
+    	<div class="header">
+        	<a class="back" href="javascript:window.history.back()"> &#60 </a>
+		</div>
+			<div class="language">English(US)</div>
+        <div class="container">
+			<div class="menu" id="mmenu">
+        		<h1 id="Pname">Your Question</h1>
+					<form id="Ballot"><ul id="ulform"></ul></form>
+					<input type="submit" value="See Results" onclick="updateModal()"><br><br>
+			</div>
+			<div class="footer"> Created by Gustavo Penedo </div>
+		</div>
+    	
+		<script src="../../js-f/Pie3.js"></script>
+		<script src="/socket.io/socket.io.js"></script>
+		<script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+		<script src="../../js-f/Poll.js"></script>
+	</body>
+</html>

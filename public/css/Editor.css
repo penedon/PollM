@@ -1,0 +1,233 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*Animation*/
+@-webkit-keyframes example {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+/* Standard syntax */
+@keyframes example {
+     from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+
+body {
+	
+	
+} 
+#grad1 {
+    height: 900px;
+   background: radial-gradient(circle,  #65787F, #2D3639); /* Standard syntax */
+   display:flex;
+}
+.container{
+	position: absolute;
+  	top: 45%;
+  	left: 50%;
+  	transform: translate(-50%, -200px);
+	width: 25%;
+	
+	transition:all 1s;
+	-webkit-animation-name: example; /* Chrome, Safari, Opera */
+    -webkit-animation-duration: 1.5s; /* Chrome, Safari, Opera */
+    animation-name: example;
+    animation-duration: 3s;
+	
+}
+
+.menu{
+	box-shadow: 5px 5px 10px black;
+	display:block;
+	position:relative;
+	border-radius: 10px;
+	background-color: white;
+	text-align: center;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	overflow: auto;
+	/*margin-bottom:200px;*/
+	
+	
+	
+
+}
+
+.menu h1{
+	border-radius: 10px 10px 0px 0px;
+	margin-top:0;
+	margin-bottom:0px;
+	text-align:left;
+	font: normal 32px/1.5 'Open Sans', sans-serif;
+	color: #3F71AE;
+	 background-image: linear-gradient(to right, #efefef, rgba(0, 0, 0, 0));
+	padding-left: 4%;
+	padding-right: 4%;
+
+	
+}
+
+.menu h3{
+	display:inline;
+	-webkit-animation-name: example; /* Chrome, Safari, Opera */
+    -webkit-animation-duration: 1.5s; /* Chrome, Safari, Opera */
+    animation-name: example;
+    animation-duration: 1.5s;
+	padding-left: 4%;
+	padding-right: 4%;
+	text-align:left;
+	
+	font: normal 20px/1.5 'Open Sans', sans-serif;
+	color:#2d3639;
+}
+
+.menu form{
+	margin: 15px 0 15px 0;	/*up left down right*/
+}
+
+hr{
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), #2d3639, rgba(0, 0, 0, 0));
+}
+
+.menu form input[type='text']{
+	display:inline;
+	padding: 6px 12px 6px;
+	margin-bottom:15px;
+	
+	border: none;
+	border-radius: 2px 2px 2px 2px;
+
+	font-size:20px;
+	box-sizing: border-box;
+	
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	box-shadow:inset 0px 1px 4px #000;
+	
+	color:#2d3639;
+
+}
+
+.menu form input.group, .menu form input.pollname{
+	width:85%;
+}
+
+.menu form input.option{
+	width:60%;
+	margin-left:25.7%;
+}
+
+.back{
+	float:left;
+	text-decoration:none;
+	text-align: center;
+}
+
+
+form input[type='button'], .header .back{
+	text-decoration:none;
+	font-variant:small-caps;
+	font-size:20px;
+	color:#2d3639;
+	border-radius: 3px;
+	border:hidden;
+	background-color: #efefef;
+	
+	padding: 6px 12px 6px 12px;
+	
+	cursor: pointer;
+
+	
+
+}
+
+#Fbutton{
+	padding-left:80px;
+	padding-right:80px;
+	background-image: linear-gradient(to right, rgba(0, 0, 0, 0), #efefef, #efefef, #efefef, rgba(0, 0, 0, 0));	
+	background-color: white;
+}
+
+.back a{color:#2d3639;text-decoration:none;}
+
+.menu .minusplus{
+	float: right;
+	margin-right:7.7%;
+
+}
+
+.menu form input.add{
+	display:inline-block;
+	/*margin-left:77.9%;*/
+}
+
+.menu form input.addgroup{
+	margin-right:57.7%;
+}
+
+.menu form input.add:hover, .menu form input.addgroup:hover, .back:hover{
+		color:white;
+		background-color: #5383D3;
+		transition: 0.5s;
+}
+
+.menu form input.add span, .menu form input.addgroup span, .back span{
+		cursor: pointer;
+  		display: inline-block;
+  		position: relative;
+  		transition: 0.5s;		
+}
+
+
+ input[type='button']:hover{
+		background-color: #5383D3;
+		transition: 0.5s;
+		color:white;
+}
+
+ input[type='text']:hover{
+		background-color: #efefef;
+		transition: 0.5s;
+
+}
+
+#Fbutton:hover{
+		background-image: linear-gradient(to right, rgba(0, 0, 0, 0), #5383D3, rgba(0, 0, 0, 0));	
+		background-color: #5383D3;
+		transition: 0.5s;
+		color:white;
+}
+
+.language{
+	color: white;
+	float:right;
+ /* 	background-color: #efefef;*/
+  	text-align: right;
+}
+
+.footer{
+	color: white;
+	position:relative;
+	display:block;
+  	right: 0;
+  	bottom: 0;
+  	left: 0;
+	top:95%;
+  	padding: 1rem;
+ /* 	background-color: #efefef;*/
+  	text-align: center;
+}
+
+@media (max-width:1080px){
+	.container { 
+		padding-top:40px;
+		width:80%;
+		top:30%;
+	}
+	
+}

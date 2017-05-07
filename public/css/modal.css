@@ -1,0 +1,170 @@
+@charset "utf-8";
+
+table {
+  width: 100%;
+  margin: 0 auto;
+}
+td {
+  width: 100%;
+  color: white;
+}
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    position: relative;
+    background-color: white;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+	
+    width: 35%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+	
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+    from {top:-300px; opacity:0} 
+    to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+}
+
+/* The Close Button */
+.close {
+    margin-left: 15px;
+    color: #e5dcc0;
+    font-weight: bold;
+    float: right;
+    font-size: 28px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.bclose {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 28px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.gclose {
+    margin-left: 15px;
+    color: #bed7b8;
+    font-weight: bold;
+    float: right;
+    font-size: 28px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+    color: #3a3c3e;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.bclose:hover,
+.bclose:focus {
+    color: #5383D3;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.gclose:hover,
+.gclose:focus {
+    color: #3a3c3e;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.info-modal-header {
+    padding: 2px 16px;
+    background-color: #41484a;
+    color: 60b2e3;
+
+}
+.modal-header {
+    padding: 2px 16px;
+    background-color: #fcf8e3;
+    color: #8a6d3b;
+
+}
+.success-modal-header {
+    padding: 2px 16px;
+    background-color: #dff0d8;
+    color: #3c763d;
+
+}
+
+.modal-body {padding: 2px 16px;overflow: auto;}
+
+.modal-body input[type="button"]{
+	text-decoration:none;
+	font-variant:small-caps;
+	font-size:20px;
+	color:#2d3639;
+	float:right;
+	margin-bottom:3px;
+	margin-right:-10px;
+	border-radius: 3px;
+	border:hidden;
+	background-color: #efefef;
+	
+	padding: 6px 12px 6px 12px;
+	cursor: pointer;
+}
+
+.modal-body input[type="button"]:hover{
+		background-color: #dff0d8;
+		color:#3c763d;
+		transition: 0.5s;
+}
+
+.modal-body input[type="button"] span{
+		cursor: pointer;
+  		display: inline-block;
+  		position: relative;
+  		transition: 0.5s;
+}
+
+.modal-footer {
+    padding: 2px 16px;
+    background-color: #5cb85c;
+    color: white;
+}
+
+@media (max-width:1080px){
+	.modal-content { 
+		width:60%; 
+	}
+	
+}

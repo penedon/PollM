@@ -1,0 +1,156 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+        <link rel="stylesheet" href="../css/Editor.css">
+		<link rel="stylesheet" href="../css/modal.css">
+		<title>Poll Maker</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script>
+			var Oid = 3;
+	
+			function clone(divId){
+				$("#"+divID).clone().appendTo("a");
+			}
+			function newQuestion(){
+				$('<input>').attr('type','text').attr('id','opt'+Oid).attr('class','option').attr('name','Option'+Oid).attr('placeholder','Option '+Oid).attr('autocomplete','off').appendTo('.answers');
+				Oid++;
+				
+			}
+			function removeQuestion(){
+				if(Oid>3){
+					Oid--;
+					$("#opt"+Oid).remove();
+					
+				}
+			}
+			function newpage(){
+				var formdata = $('form').serializeArray();
+    			for(var i = 0; i<formdata.length; i++){
+					$('<input>').attr('type','text').attr('id','opt'+Oid).attr('class','option').attr('name','Option'+Oid).attr('placeholder', formdata[i].name + ": "+formdata[i].value).appendTo('body');
+    			}
+				
+				/*var opened = window.open("/vote/url","_self_");
+				opened.document.write("<html><head><title>My title</title></head><body>test</body></html>");*/
+			}
+		</script>
+	</head>
+
+	<body background="../png/bg-2.png">
+	
+	<!-- The Modal -->
+		<div id="wModal" class="modal">
+			<div class="modal-content">
+				<div class="modal-header">
+						<table><tr><td><h2 style="color:#8a6d3b">Please, complete the form</h2></td>
+									<td align="right"><span class="close">&times;</span></td></tr>
+						</table>
+					<!-- <h2>Warning</h2> -->
+				</div>
+			</div>
+		</div>
+		<div id="sModal" class="modal">
+			<div class="modal-content">
+				<div class="success-modal-header">
+						<table><tr><td><h2 style="color:#3c763d">Congratulations!</h2></td>
+						</table>
+					<!-- <h2>Warning</h2> -->
+				</div>
+				<div class="modal-body">
+					<p>You successfully created a Poll</p>
+					<p>Thank you for using Poll Maker</p>
+					<p>Your Poll ID: <b id="code">XXXX</b></p><br><br>
+					<input type="button" align="right" value="Continue" onclick="history.go(-1)">
+				</div>
+			</div>
+		</div>
+	<!--	<div id="grad1">Test</div>-->
+    	<div class="header">
+        	<a class="back" onclick="history.go(-1);"> &#60 </a>
+    		<div id="lang" class="language">English(US)</div>
+			
+		</div>
+        <div class="container">
+        	<div class="menu">
+       		  <h1>Create New</h1>
+              <form id="CBallot"action="#" method="post"><!--/createdb-->
+			  	  <div id="title">
+                    	<input id="Vname" type="text" class="pollname" name="Question" placeholder="Add your question here" autocomplete="off"><br><hr><br>
+           		  </div>
+                <div class="answers">  
+                  	<input type="text" id="opt1" class="option" name="Option1" placeholder="Option 1" autocomplete="off">
+                    <br>
+                    <input type="text" id="opt2" class="option" name="Option2" placeholder="Option 2" autocomplete="off">
+                  	<br>
+                </div>
+                    <div class = "minusplus">
+                    	<input type="button" class="add" value="-" onclick="removeQuestion()">
+                    	<input type="button" class="add" value="+" onclick="newQuestion()">
+                    </div>
+                    <br>
+                        <!--
+                    	<input type="button" class="addgroup" value="Add Group">-->
+                    	<br><br><hr>
+                    	
+						<input id="Fbutton" class="Fbutton" type="button" value="Submit">
+                    	<br>
+                  
+				</form>      
+                
+ 				<!--<form action="demo_form.asp">
+					<input type="text" name="FirstName" placeholder="Poll ID">
+					<input type="submit" value="Submit">
+				</form>     -->  
+        	</div>
+            <div class="footer"> Created by Gustavo Penedo </div>
+        </div>
+		<script src="/socket.io/socket.io.js"></script>
+		<script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+		<script> socket = io();</script>
+     	<script>
+		
+			// Get the modal
+			var wmodal = document.getElementById('wModal');
+			var gmodal = document.getElementById('sModal');
+			// Get the <span> element that closes the modal
+			var span = document.getElementsByClassName("close")[0];
+			// When the user clicks on <span> (x), close the modal
+			span.onclick = function() {
+				wmodal.style.display = "none";
+				gmodal.style.display = "none";
+				//document.getElementById('CBallot').submit();
+			}
+			// When the user clicks anywhere outside of the modal, close it
+			window.onclick = function(event) {
+				if (event.target == wmodal) {
+					wmodal.style.display = "none";
+					gmodal.style.display = "none";
+				}
+
+			}
+			var fbutton = document.getElementById('Fbutton');
+			
+			fbutton.onclick = function(){
+				var wcount = 0;
+				if (document.getElementById('Vname').value == '') wcount+=1;
+				for (var i = 1 ; i < Oid ; i++){
+					if (document.getElementById('opt'+i).value == '') wcount++;
+				}
+				if(wcount > 0) wmodal.style.display = "block"
+				else {
+					var formdata = new Array();
+					var x = $('form').serializeArray();
+					$.each(x, function(i, field){
+						formdata[i] = field.value;
+					});
+					 socket.emit('createdb', formdata);
+					 socket.on('createdb1', function(pollcode){
+						$('#code').html(pollcode);
+					 });
+					 gmodal.style.display = "block";
+				}
+			}
+			</script>
+        
+	</body>
+</html>

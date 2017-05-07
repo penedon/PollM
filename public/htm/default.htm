@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+        <link rel="stylesheet" href="css/design.css">
+		<link rel="stylesheet" href="css/modal.css">
+        <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+		<title>Poll Maker</title>
+	</head>
+	<body background="../png/bg-2.png">
+		<!--	<div id="grad1">Test</div>   Gradient backup--> 
+
+	
+		<!-- The Modal -->
+		<div id="myModal" class="modal">
+			<div class="modal-content">
+				<div class="modal-header">
+						<table>
+							<tr>
+								<td><h2 style="color:#8a6d3b">No Poll found</h2></td>
+								<td align="right"><span class="close">&times;</span></td>
+							</tr>
+						</table>
+					<!-- <h2>Warning</h2> -->
+				</div>
+			</div>
+
+		</div>
+	
+    	<div class="language">English(US)</div>
+        <div class="container-default">
+			
+			<div class="menu">
+        		<h1>Enter Voting Section</h1><br>
+ 				<form action="javascript:SearchPoll()">
+					<input id="VoteURL" type="text" name="PollID" placeholder="Poll ID" autocomplete="off">
+					<input type="submit" value="Vote"><br><br><hr>
+				</form>       
+        	</div>
+             <div class="comment"><a href="/htm/Poll%20Editor.htm">Create your Poll</a></div>
+			 
+        </div>    
+    	<div class="footer-default"> Created by Gustavo Penedo </div>
+		
+		
+		
+			<script>
+			// Get the modal
+			var modal = document.getElementById('myModal');
+			// Get the <span> element that closes the modal
+			var span = document.getElementsByClassName("close")[0];
+			// When the user clicks on <span> (x), close the modal
+			span.onclick = function() {
+				modal.style.display = "none";
+			}
+			// When the user clicks anywhere outside of the modal, close it
+			window.onclick = function(event) {
+				if (event.target == modal) {
+					modal.style.display = "none";
+				}
+			}
+			</script>
+			
+			<script src="/socket.io/socket.io.js"></script>
+			<script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+			<script>
+			var socket = io();
+			
+			function SearchPoll(){
+				Pcode = document.getElementById('VoteURL').value;
+				socket.emit('pollcode', Pcode);
+			}
+			
+			socket.on('pollres', function(msg){
+				if(msg == 404) {
+					modal.style.display = "block";
+					document.getElementById('VoteURL').value = "";
+				}	
+				else if(msg==1){
+				
+					window.open("htm/vote/" + document.getElementById('VoteURL').value + ".html","_self");
+				}
+				
+			});
+			</script>
+		
+	</body>
+</html>

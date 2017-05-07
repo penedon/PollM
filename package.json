@@ -1,0 +1,24 @@
+{
+  "name": "Poll_Maker",
+  "version": "0.9.1",
+  "description": "Simple Poll Website",
+  "main": "index.js",
+  "dependencies": {
+    "async": "^2.1.4",
+    "express": "^4.10.2",
+    "socket.io": "^1.7.2",
+    "sqlite3": "^3.1.8"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/penedon/PollM"
+  },
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [
+    "node",
+    "Poll",
+    "Maker"
+  ]
+}
